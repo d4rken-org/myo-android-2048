@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?android:attr/actionBarSize"
+    android:paddingBottom="?android:attr/actionBarSize"
+    android:keepScreenOn="true"
+    tools:context="eu.thedarken.myo.twothousandfortyeight.MainActivity"
+    tools:ignore="MergeRootFrame" />

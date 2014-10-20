@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_white">#f9f6f2</color>
+    <color name="text_black">#776e65</color>
+    <color name="text_brown">#d6cdc4</color>
+    <color name="background">#000000</color>
+    <color name="myoblack">#1e242b</color>
+    <color name="myoteal">#00bcdd</color>
+    <color name="background1">#232528</color>
+    <color name="background3">#111111</color>
+    <color name="bordercolor1">#222222</color>
+</resources>

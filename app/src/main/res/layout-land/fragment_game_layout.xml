@@ -1,0 +1,253 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="horizontal"
+    tools:context="eu.thedarken.myo.twothousandfortyeight.MainActivity$PlaceholderFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_header"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="14dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_title_icon"
+                    android:src="@drawable/ic_circle_empty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignBottom="@+id/tv_title"
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2048"
+                    android:textSize="35sp"
+                    android:fontFamily="sans-serif-light"
+                    android:id="@+id/tv_title"
+                    android:layout_toRightOf="@+id/iv_title_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/myo_edition"
+                    android:layout_toRightOf="@+id/tv_title"
+                    android:layout_alignBaseline="@+id/tv_title"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/myoteal"
+                    android:paddingLeft="2dp"
+                    android:id="@+id/tv_myoedition" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_scoreview_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/rl_header">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/ll_scorelayout"
+                    android:padding="5dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/scoreview_background_rectangle_inner"
+                    android:layout_alignParentTop="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score"
+                        android:ems="6"
+                        android:maxEms="6"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/myoteal"
+                        android:id="@+id/tv_score_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        android:id="@+id/tv_score" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/ll_scorelayout"
+                    android:id="@+id/ll_highscore_layout"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/scoreview_background_rectangle_inner"
+                    android:padding="5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentTop="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/high_score"
+                        android:gravity="center"
+                        android:ems="6"
+                        android:maxEms="6"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/myoteal"
+                        android:id="@+id/tv_highscore_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1337"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        android:id="@+id/tv_highscore" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_buttonrow"
+                android:layout_below="@+id/rl_scoreview_layout"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"
+                android:layout_alignEnd="@+id/rl_scoreview_layout"
+                android:layout_alignStart="@+id/rl_scoreview_layout">
+
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_reload"
+                    android:id="@+id/ib_reset"
+                    android:padding="7dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="7dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_selector" />
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_info"
+                    android:id="@+id/ib_info"
+                    android:padding="7dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="7dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_selector" />
+
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_myo"
+                    android:id="@+id/ib_myo"
+                    android:padding="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_selector" />
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_undo"
+                    android:id="@+id/ib_undo"
+                    android:layout_weight="1"
+                    android:padding="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_selector" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_game_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_above="@+id/ll_ad"
+            android:layout_centerHorizontal="true"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_below="@+id/ll_buttonrow">
+
+            <eu.thedarken.myo.twothousandfortyeight.game.GameView
+                android:id="@+id/gameview"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/gameview"
+                android:layout_alignBottom="@+id/gameview"
+                android:layout_alignLeft="@+id/gameview"
+                android:gravity="center"
+                android:fontFamily="sans-serif-light"
+                android:layout_alignRight="@+id/gameview"
+                android:text="@string/you_win"
+                android:textColor="@color/myoteal"
+                android:background="@drawable/endstate_overlay_rectangle"
+                android:textSize="38sp"
+                android:id="@+id/tv_endgame_overlay" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/ll_ad"
+        android:gravity="center_horizontal|bottom"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        xmlns:ads="http://schemas.android.com/apk/res-auto">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adv_banner"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adUnitId="ca-app-pub-5458722240282398/8536726662"
+            ads:adSize="BANNER" />
+    </LinearLayout>
+</RelativeLayout>

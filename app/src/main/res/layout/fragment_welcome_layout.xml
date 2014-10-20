@@ -1,0 +1,208 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="20dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    tools:context="eu.thedarken.myo.twothousandfortyeight.InfoFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_connect_myo"
+        android:padding="10dp"
+        android:text="@string/connect_a_myo"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/myoteal"
+        android:background="@drawable/button_selector" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_setup_myo"
+        android:padding="10dp"
+        android:text="@string/perform_setup_gesture"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_selector" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_play_now"
+        android:padding="10dp"
+        android:text="@string/play"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_selector" />
+
+    <LinearLayout
+        android:id="@+id/ll_controls"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/ll_left_layout"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/scoreview_background_rectangle_inner">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_arrow_left" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pose_wave_in"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp"
+                    android:id="@+id/tv_left" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_right_layout"
+                android:gravity="center"
+                android:background="@drawable/scoreview_background_rectangle_inner"
+                android:padding="5dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pose_wave_out"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp"
+                    android:id="@+id/tv_right" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_arrow_right" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_up_layout"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/scoreview_background_rectangle_inner"
+                android:padding="5dp"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_arrow_top" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pose_spread"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_down_layout"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/scoreview_background_rectangle_inner"
+                android:padding="5dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pose_fist"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_arrow_bottom" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reverse_left_right"
+        android:id="@+id/swt_reverse"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:checked="false"
+        android:background="@drawable/scoreview_background_rectangle_inner"
+        android:padding="20dp"
+        android:layout_margin="10dp" />
+</LinearLayout>

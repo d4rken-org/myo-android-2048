@@ -1,0 +1,79 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/myo"
+        android:key="myo">
+        <PreferenceScreen
+            android:key="myo.info"
+            android:icon="@drawable/ic_myo"
+            android:title="@string/what_is_a_myo"
+            android:summary="@string/myo_explanation" />
+        <PreferenceScreen
+            android:key="myo.purchase"
+            android:icon="@drawable/ic_thalmic"
+            android:title="@string/get_a_myo"
+            android:summary="@string/you_can_get_a_myo" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/advertisements"
+        android:key="ads">
+        <PreferenceScreen
+            android:icon="@drawable/ic_coffee"
+            android:key="ads.remove"
+            android:title="@string/remove_ads"
+            android:summary="@string/thank_you" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/communication"
+        android:key="help">
+        <PreferenceScreen
+            android:key="help.mail"
+            android:icon="@drawable/ic_mail"
+            android:title="@string/need_help"
+            android:summary="@string/mail_i_speak" />
+        <PreferenceScreen
+            android:key="help.twitter"
+            android:icon="@drawable/ic_twitter"
+            android:title="darken @ Twitter"
+            android:summary="@string/twitter_come_by" />
+        <PreferenceScreen
+            android:key="help.gplus"
+            android:icon="@drawable/ic_gplus"
+            android:title="darken @ G+"
+            android:summary="@string/gplus_hear_new_stuff" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/source"
+        android:key="source">
+        <PreferenceScreen
+            android:key="source.github"
+            android:icon="@drawable/ic_github"
+            android:title="@string/source_code"
+            android:summary="@string/this_app_is_open_source" />
+        <PreferenceScreen
+            android:key="source.base"
+            android:icon="@drawable/ic_document"
+            android:title="@string/thanks_to_tpcstld"
+            android:summary="@string/thanks_to_tpcstld_extended" />
+        <PreferenceScreen
+            android:key="source.orig"
+            android:icon="@drawable/ic_document"
+            android:title="@string/thanks_to_grabriele"
+            android:summary="@string/thanks_to_grabriele_extended" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/app_name"
+        android:key="app">
+        <PreferenceScreen
+            android:key="app.version"
+            android:icon="@drawable/ic_launcher"
+            android:title="@string/app_version"
+            android:summary="Placeholder" />
+    </PreferenceCategory>
+</PreferenceScreen>

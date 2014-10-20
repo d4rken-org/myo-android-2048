@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.NoActionBar">
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+</resources>

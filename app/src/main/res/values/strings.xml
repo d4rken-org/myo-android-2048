@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">2048 Myo Edition</string>
+    <string name="high_score">HIGH SCORE</string>
+    <string name="score">SCORE</string>
+    <string name="you_win">You Win!</string>
+    <string name="game_over">Game Over!</string>
+    <string name="app_version">App version</string>
+    <string name="this_app_is_open_source">This app is open source.</string>
+    <string name="source_code">Source code</string>
+    <string name="gplus_hear_new_stuff">Hear about new stuff.</string>
+    <string name="twitter_come_by">Come by and say hi :)</string>
+    <string name="mail_i_speak">I speak English and German.</string>
+    <string name="thank_you">Thank you.</string>
+    <string name="remove_ads">Remove ads</string>
+    <string name="ads_removed">Ads are removed</string>
+    <string name="communication">Communication</string>
+    <string name="source">Source</string>
+    <string name="need_help">Need help?</string>
+    <string name="advertisements">Advertisements</string>
+    <string name="get_a_myo">Get a Myo</string>
+    <string name="you_can_get_a_myo">You can get a Myo from ThalmicLabs.</string>
+    <string name="what_is_a_myo">What is a Myo?</string>
+    <string name="myo_explanation">The Myo is an input device you wear on your arm that can track movement and hand gestures.</string>
+    <string name="myo">Myo</string>
+    <string name="thanks_to_tpcstld">Thanks to tpcstld</string>
+    <string name="thanks_to_grabriele">Thanks to Gabriele Cirulli</string>
+    <string name="thanks_to_tpcstld_extended">This app is based on tpcstld\'s 2048 Android app. Under MIT License.</string>
+    <string name="thanks_to_grabriele_extended">tpcstld based his Android version on it.</string>
+    <string name="myo_edition">Myo edition</string>
+    <string name="connect_a_myo">Connect a Myo</string>
+    <string name="setup_myo">Setup Myo</string>
+    <string name="pose_wave_in">Wave in</string>
+    <string name="pose_wave_out">Wave out</string>
+    <string name="pose_spread">Spread</string>
+    <string name="pose_fist">Fist</string>
+    <string name="reverse_left_right">Reverse Left/Right</string>
+    <string name="play">Play!</string>
+    <string name="error">The operation failed.</string>
+    <string name="purchase_unsuccessfull">Purchase unsuccessful</string>
+    <string name="start_new_game">Start new game</string>
+    <string name="undo_last_move">Undo last move</string>
+    <string name="myo_options">Myo options</string>
+    <string name="about_this_app">About this app</string>
+    <string name="perform_setup_gesture">Perform setup gesture</string>
+    <string name="arm_recognized">Arm recognized</string>
+    <string name="arm_lost">Arm lost</string>
+</resources>
