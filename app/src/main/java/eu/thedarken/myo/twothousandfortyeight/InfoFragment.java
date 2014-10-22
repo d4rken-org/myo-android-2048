@@ -101,7 +101,7 @@ public class InfoFragment extends PreferenceFragment implements MainActivity.Hid
             } else if (preference.getKey().equals("help.gplus")) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/116634499773478773276")));
             } else if (preference.getKey().equals("source.github")) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/thalmic-alpha/myo-android-2048")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/d4rken/myo-android-2048")));
             } else if (preference.getKey().equals("source.base")) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/tpcstld/2048")));
             } else if (preference.getKey().equals("source.orig")) {
