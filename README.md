@@ -3,6 +3,8 @@
 The game 2048 with Myo controls.
 Available on [Google Play](https://play.google.com/store/apps/details?id=eu.thedarken.myo.twothousandfortyeight).
 
+![](https://lh3.ggpht.com/31XjA_f46SZNaCPiIHP36AHIQLHDvrAFhyLO-PEmZD_pxF-uF9uz1G_F-gL71Wc_8jOu=h450)
+
 ### LICENSE
 My work is under Apache 2.0
 
