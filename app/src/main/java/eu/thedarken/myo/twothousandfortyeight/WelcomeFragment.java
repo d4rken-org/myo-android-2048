@@ -3,14 +3,13 @@ package eu.thedarken.myo.twothousandfortyeight;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,11 +31,12 @@ public class WelcomeFragment extends Fragment implements DeviceListener {
     private static final String TAG = "2048Myo:WelcomeFragment";
     private TextView mConnectMyo, mSetupMyo, mWhenReady, mPlayNow;
     private ImageView mLeftIcon, mRightIcon, mDownIcon, mUpIcon;
-    private LinearLayout mControlLayout;
+    private LinearLayout mControlLayout, mUpBox, mDownBox, mLeftBox, mRightBox;
     private Hub mMyoHub;
     private static final long REFRESHINTERVAL = 250;
     private boolean mConnected = false;
     private boolean mSynced = false;
+    private Animation mAnimWiggle;
 
     public static Fragment newInstance() {
         return new WelcomeFragment();
@@ -59,7 +59,12 @@ public class WelcomeFragment extends Fragment implements DeviceListener {
         mLeftIcon = (ImageView) layout.findViewById(R.id.iv_gesture_left);
         mRightIcon = (ImageView) layout.findViewById(R.id.iv_gesture_right);
         mUpIcon = (ImageView) layout.findViewById(R.id.iv_gesture_up);
-        mDownIcon= (ImageView) layout.findViewById(R.id.iv_gesture_down);
+        mDownIcon = (ImageView) layout.findViewById(R.id.iv_gesture_down);
+
+        mUpBox = (LinearLayout) layout.findViewById(R.id.ll_up_layout);
+        mDownBox = (LinearLayout) layout.findViewById(R.id.ll_down_layout);
+        mLeftBox = (LinearLayout) layout.findViewById(R.id.ll_left_layout);
+        mRightBox = (LinearLayout) layout.findViewById(R.id.ll_right_layout);
         return layout;
     }
 
@@ -106,6 +111,7 @@ public class WelcomeFragment extends Fragment implements DeviceListener {
             mMyoHub.addListener(this);
         }
 
+        mAnimWiggle = AnimationUtils.loadAnimation(getActivity(), R.anim.wiggle);
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -200,7 +206,27 @@ public class WelcomeFragment extends Fragment implements DeviceListener {
 
     @Override
     public void onPose(Myo myo, long l, Pose pose) {
-        Logy.d(TAG, "onPose");
+        Logy.i(TAG, "onPose:" + pose.name());
+        if(!isResumed())
+            return;
+
+        if (pose == Pose.FIST) {
+            mDownBox.startAnimation(mAnimWiggle);
+        } else if (pose == Pose.WAVE_OUT) {
+            if (GameFragment.sReversed) {
+                mLeftBox.startAnimation(mAnimWiggle);
+            } else {
+                mRightBox.startAnimation(mAnimWiggle);
+            }
+        } else if (pose == Pose.WAVE_IN) {
+            if (GameFragment.sReversed) {
+                mRightBox.startAnimation(mAnimWiggle);
+            } else {
+                mLeftBox.startAnimation(mAnimWiggle);
+            }
+        } else if (pose == Pose.FINGERS_SPREAD) {
+            mUpBox.startAnimation(mAnimWiggle);
+        }
     }
 
     @Override
