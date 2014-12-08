@@ -37,6 +37,7 @@ import eu.thedarken.myo.twothousandfortyeight.tools.ScoreKeeper;
 
 public class GameFragment extends Fragment implements KeyListener, DeviceListener, MainActivity.HideThemAdsCallback, Game.GameStateListener {
     private static final String TAG = "2048Myo:GameFragment";
+    public static boolean sReversed = false;
 
     private GameView mGameView;
     private Game mGame;
@@ -56,7 +57,6 @@ public class GameFragment extends Fragment implements KeyListener, DeviceListene
     private ImageButton mResetButton, mUndoButton, mMyoButton, mInfoButton;
     private LinearLayout mAdContainer;
     private TextView mTitleText;
-    private SharedPreferences mPreferences;
     private AdView mAdView;
     private MainActivity mMainActivity;
 
@@ -92,7 +92,6 @@ public class GameFragment extends Fragment implements KeyListener, DeviceListene
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mScoreKeeper = new ScoreKeeper(getActivity());
         mScoreKeeper.setViews(mScoreText, mHighScoreText);
         mGame = new Game(getActivity());
@@ -329,8 +328,13 @@ public class GameFragment extends Fragment implements KeyListener, DeviceListene
     }
 
     @Override
-    public void onPair(Myo myo, long l) {
-        Logy.d(TAG, "onPair:" + myo.getMacAddress());
+    public void onAttach(Myo myo, long l) {
+
+    }
+
+    @Override
+    public void onDetach(Myo myo, long l) {
+
     }
 
     @Override
@@ -344,31 +348,41 @@ public class GameFragment extends Fragment implements KeyListener, DeviceListene
     }
 
     @Override
-    public void onArmRecognized(Myo myo, long l, Arm arm, XDirection xDirection) {
-        Logy.i(TAG, "onArmRecognized:" + xDirection.name());
+    public void onArmSync(Myo myo, long l, Arm arm, XDirection xDirection) {
+        Logy.i(TAG, "onArmSync:" + xDirection.name());
+        sReversed = arm == Arm.LEFT;
         Toast.makeText(getActivity(), getString(R.string.arm_recognized), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onArmLost(Myo myo, long l) {
-        Logy.i(TAG, "onArmLost");
+    public void onArmUnsync(Myo myo, long l) {
+        Logy.i(TAG, "onArmUnsync");
         Toast.makeText(getActivity(), getString(R.string.arm_lost), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onUnlock(Myo myo, long l) {
+
+    }
+
+    @Override
+    public void onLock(Myo myo, long l) {
+
     }
 
     @Override
     public void onPose(Myo myo, long l, Pose pose) {
         Logy.i(TAG, "onPose:" + pose.name());
-        boolean lrReversed = mPreferences.getBoolean(WelcomeFragment.KEY_LEFT_RIGHT_REVERSED, false);
         if (pose == Pose.FIST) {
             mGame.move(Game.DIRECTION_DOWN);
         } else if (pose == Pose.WAVE_OUT) {
-            if (lrReversed) {
+            if (GameFragment.sReversed) {
                 mGame.move(Game.DIRECTION_LEFT);
             } else {
                 mGame.move(Game.DIRECTION_RIGHT);
             }
         } else if (pose == Pose.WAVE_IN) {
-            if (lrReversed) {
+            if (GameFragment.sReversed) {
                 mGame.move(Game.DIRECTION_RIGHT);
             } else {
                 mGame.move(Game.DIRECTION_LEFT);
@@ -380,19 +394,19 @@ public class GameFragment extends Fragment implements KeyListener, DeviceListene
 
     @Override
     public void onOrientationData(Myo myo, long l, Quaternion quaternion) {
-        Logy.v(TAG, l + " onOrientationData:" + quaternion.toString());
+        //Logy.v(TAG, l + " onOrientationData:" + quaternion.toString());
 
     }
 
     @Override
     public void onAccelerometerData(Myo myo, long timestamp, Vector3 v3) {
-        Logy.v(TAG, timestamp + " onAccelerometerData:" + v3.toString());
+        //Logy.v(TAG, timestamp + " onAccelerometerData:" + v3.toString());
 
     }
 
     @Override
     public void onGyroscopeData(Myo myo, long l, Vector3 vector3) {
-        Logy.v(TAG, l + " onGyoscopeData:" + vector3.toString());
+        //Logy.v(TAG, l + " onGyoscopeData:" + vector3.toString());
     }
 
     @Override
