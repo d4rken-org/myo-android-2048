@@ -8,17 +8,19 @@ import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
 import com.crashlytics.android.Crashlytics;
 import com.thalmic.myo.Hub;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import eu.thedarken.myo.twothousandfortyeight.tools.KeyListener;
 import eu.thedarken.myo.twothousandfortyeight.tools.Logy;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.IabHelper;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.IabResult;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.Inventory;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.Purchase;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -36,11 +38,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Crashlytics.start(this);
+        if (BuildConfig.BUILD_TYPE.equals("release"))
+            Crashlytics.start(this);
         setContentView(eu.thedarken.myo.twothousandfortyeight.R.layout.activity_main);
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(eu.thedarken.myo.twothousandfortyeight.R.id.container, new GameFragment())
