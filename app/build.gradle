@@ -4,27 +4,39 @@ buildscript {
         maven { url 'http://download.crashlytics.com/maven' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0-rc4'
-        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
+        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.14.7'
     }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'crashlytics'
 
+def gitSha() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
 android {
-    compileSdkVersion 20
-    buildToolsVersion "21.0.1"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 20
-        versionCode 10
-        versionName "1.0.9"
+        targetSdkVersion 22
+        versionCode 11
+        versionName "1.1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        applicationVariants.all { variant ->
+            if (variant.buildType.name == "release") {
+                variant.outputs.each { output ->
+                    def file = output.outputFile
+                    output.outputFile = new File(file.parent, "2048_Myo_Edition-v" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + gitSha() + ".apk")
+                }
+            }
         }
     }
 }
@@ -36,8 +48,8 @@ dependencies {
         }
         maven { url 'http://download.crashlytics.com/maven' }
     }
-    compile 'com.thalmic:myosdk:0.9.+@aar'
-    compile 'com.google.android.gms:play-services:4.4.+'
-    compile 'com.crashlytics.android:crashlytics:1.+'
+    compile 'com.thalmic:myosdk:0.10.0@aar'
+    compile 'com.google.android.gms:play-services-ads:7.0.0'
+    compile 'com.crashlytics.android:crashlytics:1.1.13'
 }
 

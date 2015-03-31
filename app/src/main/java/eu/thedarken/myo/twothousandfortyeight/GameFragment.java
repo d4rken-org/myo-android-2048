@@ -204,6 +204,7 @@ public class GameFragment extends Fragment implements KeyListener, DeviceListene
             mAdView.setVisibility(View.VISIBLE);
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("C34CF836138E576F0C3CC8BBF6B19388")
                     .build();
             mAdView.loadAd(adRequest);
         } else {
