@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import eu.thedarken.myo.twothousandfortyeight.BuildConfig;
+
 public class Game {
     private static final int startingMaxValue = 2048;
     private int endingMaxValue;
     private GameGrid mGameGrid = null;
     static final int DEFAULT_HEIGHT_X = 4;
     static final int DEFAULT_WIDTH_Y = 4;
-    static final int DEFAULT_TILE_TYPES = 18;
+    static final int DEFAULT_TILE_TYPES = 24;
     private static final int DEFAULT_STARTING_TILES = 2;
     private int mPositionsX = DEFAULT_HEIGHT_X;
     private int mPositionsY = DEFAULT_WIDTH_Y;
@@ -124,6 +126,14 @@ public class Game {
             prepareUndoState();
             saveUndoState();
             mGameGrid.clearGrid();
+        }
+
+        if (BuildConfig.DEBUG) {
+            int value = 2;
+            for (Position pos : mGameGrid.getAvailableCells().subList(0, mGameGrid.getAvailableCells().size())) {
+                spawnTile(new Tile(pos, value));
+                value *= 2;
+            }
         }
         endingMaxValue = (int) Math.pow(2, mTileTypes - 1);
         mView.updateGrid(mGameGrid);

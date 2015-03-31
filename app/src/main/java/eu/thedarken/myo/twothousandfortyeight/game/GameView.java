@@ -8,9 +8,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import eu.thedarken.myo.twothousandfortyeight.R;
 
 import java.util.ArrayList;
+
+import eu.thedarken.myo.twothousandfortyeight.R;
 
 public class GameView extends View {
     private static final int BASE_ANIMATION_TIME = 100000000;
@@ -34,8 +35,6 @@ public class GameView extends View {
     private float mTextSize = 0;
     private float mCellTextSize = 0;
     private int mGridWidth = 0;
-    private int mTextBlack;
-    private int mTextWhite;
     private int mStartingX;
     private int mStartingY;
     private int mEndingX;
@@ -86,6 +85,7 @@ public class GameView extends View {
             //Getting assets
             mBackgroundRectangle = getResources().getDrawable(R.drawable.background_rectangle);
             mCellRectangle[0] = getResources().getDrawable(R.drawable.cell_rectangle);
+
             mCellRectangle[1] = getResources().getDrawable(R.drawable.cell_rectangle_2);
             mCellRectangle[2] = getResources().getDrawable(R.drawable.cell_rectangle_4);
             mCellRectangle[3] = getResources().getDrawable(R.drawable.cell_rectangle_8);
@@ -99,13 +99,19 @@ public class GameView extends View {
             mCellRectangle[11] = getResources().getDrawable(R.drawable.cell_rectangle_2048);
             mCellRectangle[12] = getResources().getDrawable(R.drawable.cell_rectangle_4096);
             mCellRectangle[13] = getResources().getDrawable(R.drawable.cell_rectangle_8192);
-            for (int xx = 14; xx < mCellRectangle.length; xx++) {
-                mCellRectangle[xx] = getResources().getDrawable(R.drawable.cell_rectangle_16384);
+            mCellRectangle[14] = getResources().getDrawable(R.drawable.cell_rectangle_16384);
+            mCellRectangle[15] = getResources().getDrawable(R.drawable.cell_rectangle_32768);
+            mCellRectangle[16] = getResources().getDrawable(R.drawable.cell_rectangle_65536);
+            mCellRectangle[17] = getResources().getDrawable(R.drawable.cell_rectangle_131072);
+            mCellRectangle[18] = getResources().getDrawable(R.drawable.cell_rectangle_262144);
+            mCellRectangle[19] = getResources().getDrawable(R.drawable.cell_rectangle_524288);
+
+            for (int xx = 20; xx < mCellRectangle.length; xx++) {
+                mCellRectangle[xx] = getResources().getDrawable(R.drawable.cell_rectangle_524288);
             }
+
             mLightUpRectangle = getResources().getDrawable(R.drawable.light_up_rectangle);
             mFadeRectangle = getResources().getDrawable(R.drawable.fade_rectangle);
-            mTextWhite = getResources().getColor(R.color.text_white);
-            mTextBlack = getResources().getColor(R.color.text_black);
             mPaint.setAntiAlias(true);
         } catch (Exception e) {
             System.out.println("Error getting assets?");
@@ -317,10 +323,12 @@ public class GameView extends View {
 
     private void drawTileText(Canvas canvas, int value, int sX, int sY) {
         int textShiftY = centerText();
-        if (value >= 8) {
-            mPaint.setColor(mTextWhite);
+        if (value == 2) {
+            mPaint.setColor(getResources().getColor(R.color.text_shadow));
+            mPaint.setShadowLayer(2.0f, 0, 0, getResources().getColor(R.color.text_white));
         } else {
-            mPaint.setColor(mTextBlack);
+            mPaint.setColor(getResources().getColor(R.color.text_white));
+            mPaint.setShadowLayer(2.0f, 0, 0, getResources().getColor(R.color.text_shadow));
         }
         canvas.drawText("" + value, sX + mCellSize / 2, sY + mCellSize / 2 - textShiftY, mPaint);
     }
