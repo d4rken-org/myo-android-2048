@@ -1,14 +1,19 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url 'http://download.crashlytics.com/maven' }
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.14.7'
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'crashlytics'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
@@ -25,11 +30,7 @@ android {
         versionName "1.1.1"
     }
     buildTypes {
-        debug {
-            ext.enableCrashlytics = false
-        }
         release {
-            ext.enableCrashlytics = true
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
@@ -54,6 +55,8 @@ dependencies {
     }
     compile 'com.thalmic:myosdk:0.10.0@aar'
     compile 'com.google.android.gms:play-services-ads:7.0.0'
-    compile 'com.crashlytics.android:crashlytics:1.1.13'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.3@aar') {
+        transitive = true;
+    }
 }
 

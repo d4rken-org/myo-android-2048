@@ -21,6 +21,7 @@ import eu.thedarken.myo.twothousandfortyeight.tools.iap.IabHelper;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.IabResult;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.Inventory;
 import eu.thedarken.myo.twothousandfortyeight.tools.iap.Purchase;
+import io.fabric.sdk.android.Fabric;
 
 
 public class MainActivity extends Activity {
@@ -39,7 +40,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (BuildConfig.BUILD_TYPE.equals("release"))
-            Crashlytics.start(this);
+            Fabric.with(this, new Crashlytics());
         setContentView(eu.thedarken.myo.twothousandfortyeight.R.layout.activity_main);
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
